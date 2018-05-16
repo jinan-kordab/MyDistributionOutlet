@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="5de7072f3d7c4a4190d9ee9eba6bed6c" Name="Diagram1">
+        <EntityTypeShape EntityType="WH01Model.COUNTRY" Width="1.5" PointX="0.75" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="WH01Model.PRODUCT" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WH01Model.PRODUCT_BOXING_DETAILS" Width="1.5" PointX="9.75" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="WH01Model.PRODUCT_DESCRIPTION" Width="1.5" PointX="7.5" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WH01Model.PRODUCT_DESCRIPTION_DETAIL" Width="1.5" PointX="9.75" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="WH01Model.SHIPMENT" Width="1.5" PointX="3" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="WH01Model.SHIPMENT_DETAIL" Width="1.5" PointX="5.25" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="WH01Model.SHIPMENT_PRODUCT_DETAIL" Width="1.5" PointX="7.5" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="WH01Model.SHIPMENT_SUPPLIER" Width="1.5" PointX="5.25" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="WH01Model.SUPPLIER" Width="1.5" PointX="3" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="WH01Model.sysdiagrams" Width="1.5" PointX="5.75" PointY="12.375" IsExpanded="true" />
+        <AssociationConnector Association="WH01Model.FK_SHIPMENT_COUNTRY" ManuallyRouted="false" />
+        <AssociationConnector Association="WH01Model.FK_SUPPLIER_COUNTRY" ManuallyRouted="false" />
+        <AssociationConnector Association="WH01Model.FK_PRODUCT_DESCRIPTION_PRODUCT" ManuallyRouted="false" />
+        <AssociationConnector Association="WH01Model.FK_SHIPMENT_PRODUCT_DETAIL_PRODUCT" ManuallyRouted="false" />
+        <AssociationConnector Association="WH01Model.FK_PRODUCT_BOXING_DETAILS_SHIPMENT_PRODUCT_DETAIL" ManuallyRouted="false" />
+        <AssociationConnector Association="WH01Model.FK_PRODUCT_DESCRIPTION_DETAIL_PRODUCT_DESCRIPTION" ManuallyRouted="false" />
+        <AssociationConnector Association="WH01Model.FK_SHIPMENT_DETAIL_SHIPMENT" ManuallyRouted="false" />
+        <AssociationConnector Association="WH01Model.FK_SHIPMENT_SHIPMENT" ManuallyRouted="false" />
+        <AssociationConnector Association="WH01Model.FK_SHIPMENT_SUPPLIER_SHIPMENT" ManuallyRouted="false" />
+        <AssociationConnector Association="WH01Model.FK_SHIPMENT_PRODUCT_DETAIL_SHIPMENT_DETAIL" ManuallyRouted="false" />
+        <AssociationConnector Association="WH01Model.FK_SHIPMENT_SUPPLIER_SUPPLIER" ManuallyRouted="false" />
+        <AssociationConnector Association="WH01Model.FK_SUPPLIER_SUPPLIER" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
