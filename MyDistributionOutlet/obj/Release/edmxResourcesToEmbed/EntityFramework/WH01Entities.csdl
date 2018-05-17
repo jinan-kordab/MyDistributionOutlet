@@ -1,0 +1,399 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="WH01Model" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="WH01Entities" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="COUNTRY" EntityType="WH01Model.COUNTRY" />
+    <EntitySet Name="PRODUCT" EntityType="WH01Model.PRODUCT" />
+    <EntitySet Name="PRODUCT_BOXING_DETAILS" EntityType="WH01Model.PRODUCT_BOXING_DETAILS" />
+    <EntitySet Name="PRODUCT_DESCRIPTION" EntityType="WH01Model.PRODUCT_DESCRIPTION" />
+    <EntitySet Name="PRODUCT_DESCRIPTION_DETAIL" EntityType="WH01Model.PRODUCT_DESCRIPTION_DETAIL" />
+    <EntitySet Name="SHIPMENT" EntityType="WH01Model.SHIPMENT" />
+    <EntitySet Name="SHIPMENT_DETAIL" EntityType="WH01Model.SHIPMENT_DETAIL" />
+    <EntitySet Name="SHIPMENT_PRODUCT_DETAIL" EntityType="WH01Model.SHIPMENT_PRODUCT_DETAIL" />
+    <EntitySet Name="SHIPMENT_SUPPLIER" EntityType="WH01Model.SHIPMENT_SUPPLIER" />
+    <EntitySet Name="SUPPLIER" EntityType="WH01Model.SUPPLIER" />
+    <EntitySet Name="sysdiagrams" EntityType="WH01Model.sysdiagrams" />
+    <AssociationSet Name="FK_SHIPMENT_COUNTRY" Association="WH01Model.FK_SHIPMENT_COUNTRY">
+      <End Role="COUNTRY" EntitySet="COUNTRY" />
+      <End Role="SHIPMENT" EntitySet="SHIPMENT" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SUPPLIER_COUNTRY" Association="WH01Model.FK_SUPPLIER_COUNTRY">
+      <End Role="COUNTRY" EntitySet="COUNTRY" />
+      <End Role="SUPPLIER" EntitySet="SUPPLIER" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PRODUCT_DESCRIPTION_PRODUCT" Association="WH01Model.FK_PRODUCT_DESCRIPTION_PRODUCT">
+      <End Role="PRODUCT" EntitySet="PRODUCT" />
+      <End Role="PRODUCT_DESCRIPTION" EntitySet="PRODUCT_DESCRIPTION" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SHIPMENT_PRODUCT_DETAIL_PRODUCT" Association="WH01Model.FK_SHIPMENT_PRODUCT_DETAIL_PRODUCT">
+      <End Role="PRODUCT" EntitySet="PRODUCT" />
+      <End Role="SHIPMENT_PRODUCT_DETAIL" EntitySet="SHIPMENT_PRODUCT_DETAIL" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PRODUCT_BOXING_DETAILS_SHIPMENT_PRODUCT_DETAIL" Association="WH01Model.FK_PRODUCT_BOXING_DETAILS_SHIPMENT_PRODUCT_DETAIL">
+      <End Role="SHIPMENT_PRODUCT_DETAIL" EntitySet="SHIPMENT_PRODUCT_DETAIL" />
+      <End Role="PRODUCT_BOXING_DETAILS" EntitySet="PRODUCT_BOXING_DETAILS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PRODUCT_DESCRIPTION_DETAIL_PRODUCT_DESCRIPTION" Association="WH01Model.FK_PRODUCT_DESCRIPTION_DETAIL_PRODUCT_DESCRIPTION">
+      <End Role="PRODUCT_DESCRIPTION" EntitySet="PRODUCT_DESCRIPTION" />
+      <End Role="PRODUCT_DESCRIPTION_DETAIL" EntitySet="PRODUCT_DESCRIPTION_DETAIL" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SHIPMENT_DETAIL_SHIPMENT" Association="WH01Model.FK_SHIPMENT_DETAIL_SHIPMENT">
+      <End Role="SHIPMENT" EntitySet="SHIPMENT" />
+      <End Role="SHIPMENT_DETAIL" EntitySet="SHIPMENT_DETAIL" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SHIPMENT_SHIPMENT" Association="WH01Model.FK_SHIPMENT_SHIPMENT">
+      <End Role="SHIPMENT" EntitySet="SHIPMENT" />
+      <End Role="SHIPMENT1" EntitySet="SHIPMENT" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SHIPMENT_SUPPLIER_SHIPMENT" Association="WH01Model.FK_SHIPMENT_SUPPLIER_SHIPMENT">
+      <End Role="SHIPMENT" EntitySet="SHIPMENT" />
+      <End Role="SHIPMENT_SUPPLIER" EntitySet="SHIPMENT_SUPPLIER" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SHIPMENT_PRODUCT_DETAIL_SHIPMENT_DETAIL" Association="WH01Model.FK_SHIPMENT_PRODUCT_DETAIL_SHIPMENT_DETAIL">
+      <End Role="SHIPMENT_DETAIL" EntitySet="SHIPMENT_DETAIL" />
+      <End Role="SHIPMENT_PRODUCT_DETAIL" EntitySet="SHIPMENT_PRODUCT_DETAIL" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SHIPMENT_SUPPLIER_SUPPLIER" Association="WH01Model.FK_SHIPMENT_SUPPLIER_SUPPLIER">
+      <End Role="SUPPLIER" EntitySet="SUPPLIER" />
+      <End Role="SHIPMENT_SUPPLIER" EntitySet="SHIPMENT_SUPPLIER" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SUPPLIER_SUPPLIER" Association="WH01Model.FK_SUPPLIER_SUPPLIER">
+      <End Role="SUPPLIER" EntitySet="SUPPLIER" />
+      <End Role="SUPPLIER1" EntitySet="SUPPLIER" />
+    </AssociationSet>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(WH01Model.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(WH01Model.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+  </EntityContainer>
+  <EntityType Name="COUNTRY">
+    <Key>
+      <PropertyRef Name="countryID" />
+    </Key>
+    <Property Name="countryID" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="countryName" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="countryAbbreviation" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="countryFlag" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="SHIPMENT" Relationship="WH01Model.FK_SHIPMENT_COUNTRY" FromRole="COUNTRY" ToRole="SHIPMENT" />
+    <NavigationProperty Name="SUPPLIER" Relationship="WH01Model.FK_SUPPLIER_COUNTRY" FromRole="COUNTRY" ToRole="SUPPLIER" />
+  </EntityType>
+  <EntityType Name="PRODUCT">
+    <Key>
+      <PropertyRef Name="productID" />
+    </Key>
+    <Property Name="productID" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="productName" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="productSerialNumber" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="PRODUCT_DESCRIPTION" Relationship="WH01Model.FK_PRODUCT_DESCRIPTION_PRODUCT" FromRole="PRODUCT" ToRole="PRODUCT_DESCRIPTION" />
+    <NavigationProperty Name="SHIPMENT_PRODUCT_DETAIL" Relationship="WH01Model.FK_SHIPMENT_PRODUCT_DETAIL_PRODUCT" FromRole="PRODUCT" ToRole="SHIPMENT_PRODUCT_DETAIL" />
+  </EntityType>
+  <EntityType Name="PRODUCT_BOXING_DETAILS">
+    <Key>
+      <PropertyRef Name="productBoxingDetailsID" />
+    </Key>
+    <Property Name="productBoxingDetailsID" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="shipmentProductDetailsID" Type="Int64" Nullable="false" />
+    <Property Name="numberOfBoxes" Type="Int64" Nullable="false" />
+    <Property Name="numberOfPacks" Type="Int64" Nullable="false" />
+    <Property Name="numberOfProducts" Type="Int64" Nullable="false" />
+    <Property Name="numberOfProductsPerPack" Type="Int64" Nullable="false" />
+    <Property Name="numberOfPacksPerBox" Type="Int64" Nullable="false" />
+    <NavigationProperty Name="SHIPMENT_PRODUCT_DETAIL" Relationship="WH01Model.FK_PRODUCT_BOXING_DETAILS_SHIPMENT_PRODUCT_DETAIL" FromRole="PRODUCT_BOXING_DETAILS" ToRole="SHIPMENT_PRODUCT_DETAIL" />
+  </EntityType>
+  <EntityType Name="PRODUCT_DESCRIPTION">
+    <Key>
+      <PropertyRef Name="productDescriptionID" />
+    </Key>
+    <Property Name="productDescriptionID" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="productID" Type="Int64" Nullable="false" />
+    <Property Name="productDescLong" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="prodctCopied" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="PRODUCT" Relationship="WH01Model.FK_PRODUCT_DESCRIPTION_PRODUCT" FromRole="PRODUCT_DESCRIPTION" ToRole="PRODUCT" />
+    <NavigationProperty Name="PRODUCT_DESCRIPTION_DETAIL" Relationship="WH01Model.FK_PRODUCT_DESCRIPTION_DETAIL_PRODUCT_DESCRIPTION" FromRole="PRODUCT_DESCRIPTION" ToRole="PRODUCT_DESCRIPTION_DETAIL" />
+  </EntityType>
+  <EntityType Name="PRODUCT_DESCRIPTION_DETAIL">
+    <Key>
+      <PropertyRef Name="productDescriptionDetailsID" />
+    </Key>
+    <Property Name="productDescriptionDetailsID" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="productDescriptionID" Type="Int64" Nullable="false" />
+    <Property Name="productColor" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="productWeight" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="productSize" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="productPrice" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="PRODUCT_DESCRIPTION" Relationship="WH01Model.FK_PRODUCT_DESCRIPTION_DETAIL_PRODUCT_DESCRIPTION" FromRole="PRODUCT_DESCRIPTION_DETAIL" ToRole="PRODUCT_DESCRIPTION" />
+  </EntityType>
+  <EntityType Name="SHIPMENT">
+    <Key>
+      <PropertyRef Name="shipmentID" />
+    </Key>
+    <Property Name="shipmentID" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="countryID" Type="Int64" />
+    <Property Name="shipmentCity" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="shipmentProvince" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="COUNTRY" Relationship="WH01Model.FK_SHIPMENT_COUNTRY" FromRole="SHIPMENT" ToRole="COUNTRY" />
+    <NavigationProperty Name="SHIPMENT_DETAIL" Relationship="WH01Model.FK_SHIPMENT_DETAIL_SHIPMENT" FromRole="SHIPMENT" ToRole="SHIPMENT_DETAIL" />
+    <NavigationProperty Name="SHIPMENT1" Relationship="WH01Model.FK_SHIPMENT_SHIPMENT" FromRole="SHIPMENT" ToRole="SHIPMENT1" />
+    <NavigationProperty Name="SHIPMENT2" Relationship="WH01Model.FK_SHIPMENT_SHIPMENT" FromRole="SHIPMENT1" ToRole="SHIPMENT" />
+    <NavigationProperty Name="SHIPMENT_SUPPLIER" Relationship="WH01Model.FK_SHIPMENT_SUPPLIER_SHIPMENT" FromRole="SHIPMENT" ToRole="SHIPMENT_SUPPLIER" />
+  </EntityType>
+  <EntityType Name="SHIPMENT_DETAIL">
+    <Key>
+      <PropertyRef Name="shipmentDetailsID" />
+    </Key>
+    <Property Name="shipmentDetailsID" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="shipmentID" Type="Int64" Nullable="false" />
+    <Property Name="shipmentDate" Type="DateTime" Precision="3" />
+    <Property Name="shipmentEstimatedArrivalDate" Type="DateTime" Precision="3" />
+    <Property Name="shipmentArrivalDate" Type="DateTime" Precision="3" />
+    <Property Name="shipmentMethod" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="numberOfProducts" Type="Int64" />
+    <NavigationProperty Name="SHIPMENT" Relationship="WH01Model.FK_SHIPMENT_DETAIL_SHIPMENT" FromRole="SHIPMENT_DETAIL" ToRole="SHIPMENT" />
+    <NavigationProperty Name="SHIPMENT_PRODUCT_DETAIL" Relationship="WH01Model.FK_SHIPMENT_PRODUCT_DETAIL_SHIPMENT_DETAIL" FromRole="SHIPMENT_DETAIL" ToRole="SHIPMENT_PRODUCT_DETAIL" />
+  </EntityType>
+  <EntityType Name="SHIPMENT_PRODUCT_DETAIL">
+    <Key>
+      <PropertyRef Name="shipmentProductDetailsID" />
+    </Key>
+    <Property Name="shipmentProductDetailsID" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="shipmentDetailsID" Type="Int64" />
+    <Property Name="productID" Type="Int64" />
+    <NavigationProperty Name="PRODUCT" Relationship="WH01Model.FK_SHIPMENT_PRODUCT_DETAIL_PRODUCT" FromRole="SHIPMENT_PRODUCT_DETAIL" ToRole="PRODUCT" />
+    <NavigationProperty Name="PRODUCT_BOXING_DETAILS" Relationship="WH01Model.FK_PRODUCT_BOXING_DETAILS_SHIPMENT_PRODUCT_DETAIL" FromRole="SHIPMENT_PRODUCT_DETAIL" ToRole="PRODUCT_BOXING_DETAILS" />
+    <NavigationProperty Name="SHIPMENT_DETAIL" Relationship="WH01Model.FK_SHIPMENT_PRODUCT_DETAIL_SHIPMENT_DETAIL" FromRole="SHIPMENT_PRODUCT_DETAIL" ToRole="SHIPMENT_DETAIL" />
+  </EntityType>
+  <EntityType Name="SHIPMENT_SUPPLIER">
+    <Key>
+      <PropertyRef Name="shipmentSupplierID" />
+    </Key>
+    <Property Name="shipmentSupplierID" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="shipmentID" Type="Int64" Nullable="false" />
+    <Property Name="supplierID" Type="Int64" Nullable="false" />
+    <NavigationProperty Name="SHIPMENT" Relationship="WH01Model.FK_SHIPMENT_SUPPLIER_SHIPMENT" FromRole="SHIPMENT_SUPPLIER" ToRole="SHIPMENT" />
+    <NavigationProperty Name="SUPPLIER" Relationship="WH01Model.FK_SHIPMENT_SUPPLIER_SUPPLIER" FromRole="SHIPMENT_SUPPLIER" ToRole="SUPPLIER" />
+  </EntityType>
+  <EntityType Name="SUPPLIER">
+    <Key>
+      <PropertyRef Name="supplierID" />
+    </Key>
+    <Property Name="supplierID" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="supplierName" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="countryID" Type="Int64" Nullable="false" />
+    <Property Name="supplierProvince" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="supplierCity" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="supplierPostalCode" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="supplierTelephone" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="supplierFax" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="supplierEmail" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="supplierStreet" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="supplierUnitNumber" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="COUNTRY" Relationship="WH01Model.FK_SUPPLIER_COUNTRY" FromRole="SUPPLIER" ToRole="COUNTRY" />
+    <NavigationProperty Name="SHIPMENT_SUPPLIER" Relationship="WH01Model.FK_SHIPMENT_SUPPLIER_SUPPLIER" FromRole="SUPPLIER" ToRole="SHIPMENT_SUPPLIER" />
+    <NavigationProperty Name="SUPPLIER1" Relationship="WH01Model.FK_SUPPLIER_SUPPLIER" FromRole="SUPPLIER" ToRole="SUPPLIER1" />
+    <NavigationProperty Name="SUPPLIER2" Relationship="WH01Model.FK_SUPPLIER_SUPPLIER" FromRole="SUPPLIER1" ToRole="SUPPLIER" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_SHIPMENT_COUNTRY">
+    <End Role="COUNTRY" Type="WH01Model.COUNTRY" Multiplicity="0..1" />
+    <End Role="SHIPMENT" Type="WH01Model.SHIPMENT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="COUNTRY">
+        <PropertyRef Name="countryID" />
+      </Principal>
+      <Dependent Role="SHIPMENT">
+        <PropertyRef Name="countryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SUPPLIER_COUNTRY">
+    <End Role="COUNTRY" Type="WH01Model.COUNTRY" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="SUPPLIER" Type="WH01Model.SUPPLIER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="COUNTRY">
+        <PropertyRef Name="countryID" />
+      </Principal>
+      <Dependent Role="SUPPLIER">
+        <PropertyRef Name="countryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PRODUCT_DESCRIPTION_PRODUCT">
+    <End Role="PRODUCT" Type="WH01Model.PRODUCT" Multiplicity="1" />
+    <End Role="PRODUCT_DESCRIPTION" Type="WH01Model.PRODUCT_DESCRIPTION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PRODUCT">
+        <PropertyRef Name="productID" />
+      </Principal>
+      <Dependent Role="PRODUCT_DESCRIPTION">
+        <PropertyRef Name="productID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SHIPMENT_PRODUCT_DETAIL_PRODUCT">
+    <End Role="PRODUCT" Type="WH01Model.PRODUCT" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="SHIPMENT_PRODUCT_DETAIL" Type="WH01Model.SHIPMENT_PRODUCT_DETAIL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PRODUCT">
+        <PropertyRef Name="productID" />
+      </Principal>
+      <Dependent Role="SHIPMENT_PRODUCT_DETAIL">
+        <PropertyRef Name="productID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PRODUCT_BOXING_DETAILS_SHIPMENT_PRODUCT_DETAIL">
+    <End Role="SHIPMENT_PRODUCT_DETAIL" Type="WH01Model.SHIPMENT_PRODUCT_DETAIL" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="PRODUCT_BOXING_DETAILS" Type="WH01Model.PRODUCT_BOXING_DETAILS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SHIPMENT_PRODUCT_DETAIL">
+        <PropertyRef Name="shipmentProductDetailsID" />
+      </Principal>
+      <Dependent Role="PRODUCT_BOXING_DETAILS">
+        <PropertyRef Name="shipmentProductDetailsID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PRODUCT_DESCRIPTION_DETAIL_PRODUCT_DESCRIPTION">
+    <End Role="PRODUCT_DESCRIPTION" Type="WH01Model.PRODUCT_DESCRIPTION" Multiplicity="1" />
+    <End Role="PRODUCT_DESCRIPTION_DETAIL" Type="WH01Model.PRODUCT_DESCRIPTION_DETAIL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PRODUCT_DESCRIPTION">
+        <PropertyRef Name="productDescriptionID" />
+      </Principal>
+      <Dependent Role="PRODUCT_DESCRIPTION_DETAIL">
+        <PropertyRef Name="productDescriptionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SHIPMENT_DETAIL_SHIPMENT">
+    <End Role="SHIPMENT" Type="WH01Model.SHIPMENT" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="SHIPMENT_DETAIL" Type="WH01Model.SHIPMENT_DETAIL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SHIPMENT">
+        <PropertyRef Name="shipmentID" />
+      </Principal>
+      <Dependent Role="SHIPMENT_DETAIL">
+        <PropertyRef Name="shipmentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SHIPMENT_SHIPMENT">
+    <End Role="SHIPMENT" Type="WH01Model.SHIPMENT" Multiplicity="1" />
+    <End Role="SHIPMENT1" Type="WH01Model.SHIPMENT" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="SHIPMENT">
+        <PropertyRef Name="shipmentID" />
+      </Principal>
+      <Dependent Role="SHIPMENT1">
+        <PropertyRef Name="shipmentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SHIPMENT_SUPPLIER_SHIPMENT">
+    <End Role="SHIPMENT" Type="WH01Model.SHIPMENT" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="SHIPMENT_SUPPLIER" Type="WH01Model.SHIPMENT_SUPPLIER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SHIPMENT">
+        <PropertyRef Name="shipmentID" />
+      </Principal>
+      <Dependent Role="SHIPMENT_SUPPLIER">
+        <PropertyRef Name="shipmentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SHIPMENT_PRODUCT_DETAIL_SHIPMENT_DETAIL">
+    <End Role="SHIPMENT_DETAIL" Type="WH01Model.SHIPMENT_DETAIL" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="SHIPMENT_PRODUCT_DETAIL" Type="WH01Model.SHIPMENT_PRODUCT_DETAIL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SHIPMENT_DETAIL">
+        <PropertyRef Name="shipmentDetailsID" />
+      </Principal>
+      <Dependent Role="SHIPMENT_PRODUCT_DETAIL">
+        <PropertyRef Name="shipmentDetailsID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SHIPMENT_SUPPLIER_SUPPLIER">
+    <End Role="SUPPLIER" Type="WH01Model.SUPPLIER" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="SHIPMENT_SUPPLIER" Type="WH01Model.SHIPMENT_SUPPLIER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SUPPLIER">
+        <PropertyRef Name="supplierID" />
+      </Principal>
+      <Dependent Role="SHIPMENT_SUPPLIER">
+        <PropertyRef Name="supplierID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SUPPLIER_SUPPLIER">
+    <End Role="SUPPLIER" Type="WH01Model.SUPPLIER" Multiplicity="1" />
+    <End Role="SUPPLIER1" Type="WH01Model.SUPPLIER" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="SUPPLIER">
+        <PropertyRef Name="supplierID" />
+      </Principal>
+      <Dependent Role="SUPPLIER1">
+        <PropertyRef Name="supplierID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+</Schema>
